@@ -1,0 +1,683 @@
+/* ===== COLORS (ilisi ra diri kung gusto ka ug lain nga kolor) ===== */
+:root {
+  --green: #0f3d2e;
+  --green-light: #1f6b50;
+  --gold: #c9a227;
+  --paper: #fbf7ec;
+  --ink: #1d2b24;
+  --line: #d6e6dc;
+  --red: #c0392b;
+}
+
+/* ===== BASIC ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;   /* smooth ang scroll pag click sa menu */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ink);
+  line-height: 1.7;
+  background-color: var(--paper);
+  /* ledger lines (daw notebook sa accountant) */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    var(--line) 31px,
+    var(--line) 32px
+  );
+}
+
+/* pula nga linya sa wala, murag ledger */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 48px;
+  width: 4px;
+  border-left: 1px solid var(--red);
+  border-right: 1px solid var(--red);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 8%;
+  background-color: var(--green);
+  border-bottom: 3px solid var(--gold);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: white;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.navbar nav a {
+  color: #e8f3ec;
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 0.9rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 80px 8% 70px 12%;
+  min-height: 85vh;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.small-title {
+  font-family: 'Special Elite', monospace;
+  letter-spacing: 3px;
+  color: var(--green-light);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.6rem;
+  line-height: 1.1;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.course {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.school {
+  color: #55665d;
+  margin-bottom: 18px;
+}
+
+.intro {
+  max-width: 520px;
+  margin-bottom: 26px;
+  background: rgba(251, 247, 236, 0.9);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  background-color: var(--green);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid var(--green);
+  margin-right: 10px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: var(--green);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--green);
+}
+
+/* ===== COIN + STAMP (CSS ra, walay JavaScript) ===== */
+.hero-art {
+  position: relative;
+  flex: 0 0 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f6e08a, var(--gold) 55%, #8f7213);
+  border: 10px double #8f7213;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  animation: spin 6s ease-in-out infinite;
+}
+
+.coin span {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+@keyframes spin {
+  0%   { transform: rotateY(0deg); }
+  50%  { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.stamp {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  transform: rotate(-12deg);
+  border: 4px solid var(--red);
+  color: var(--red);
+  font-family: 'Special Elite', monospace;
+  font-size: 1rem;
+  text-align: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  line-height: 1.2;
+  background: rgba(251, 247, 236, 0.85);
+  opacity: 0.9;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 70px 8% 30px 12%;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--green);
+  margin-bottom: 30px;
+}
+
+.section-title small {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: var(--gold);
+  margin-top: 8px;
+}
+
+/* ===== PAPER / CARD ===== */
+.paper {
+  background-color: white;
+  padding: 28px 32px;
+  border-left: 6px solid var(--green);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  max-width: 850px;
+}
+
+.paper p {
+  margin-bottom: 14px;
+}
+
+.small-paper {
+  margin-top: 30px;
+}
+
+.small-paper h3 {
+  margin-bottom: 12px;
+  color: var(--green);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background-color: white;
+  padding: 26px;
+  border-top: 5px solid var(--green);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.card p {
+  margin-bottom: 12px;
+}
+
+.card.gold {
+  border-top-color: var(--gold);
+}
+
+/* ===== CHIPS (skills list) ===== */
+.chips {
+  list-style: none;
+}
+
+.chips li {
+  background-color: #eef6f1;
+  border-left: 4px solid var(--gold);
+  padding: 7px 12px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  max-width: 750px;
+  padding-left: 30px;
+  border-left: 4px solid var(--green);
+}
+
+.timeline-item {
+  position: relative;
+  background-color: white;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* bilog nga gamay sa timeline */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -43px;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--gold);
+  border: 4px solid var(--green);
+  border-radius: 50%;
+}
+
+.year {
+  font-family: 'Special Elite', monospace;
+  color: var(--green-light);
+  font-size: 0.9rem;
+}
+
+.timeline-item h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--green);
+}
+
+/* ===== WORK ENTRIES ===== */
+.entry {
+  background-color: white;
+  padding: 26px;
+  border-radius: 6px;
+  border: 2px dashed var(--green-light);
+  position: relative;
+  transition: 0.3s;
+}
+
+.entry:hover {
+  border-style: solid;
+  background-color: #f3faf6;
+  transform: rotate(-1deg) translateY(-4px);
+}
+
+.entry-no {
+  position: absolute;
+  top: -14px;
+  left: 18px;
+  background-color: var(--gold);
+  color: var(--green);
+  font-family: 'Special Elite', monospace;
+  padding: 2px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.entry h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--green);
+  margin-top: 6px;
+}
+
+.entry-title {
+  font-weight: 600;
+  color: var(--green-light);
+  margin-bottom: 10px;
+}
+
+.entry p {
+  margin-bottom: 10px;
+  font-size: 0.93rem;
+}
+
+.learned {
+  background-color: #fff8de;
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 70px;
+  padding: 30px 8%;
+  background-color: var(--green);
+  color: #e8f3ec;
+  text-align: center;
+  border-top: 4px solid var(--gold);
+}
+
+.total {
+  font-family: 'Special Elite', monospace;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+/* =========================================
+   3D EFFECTS (basic ra nga code)
+   Ang gigamit: perspective, transform, box-shadow
+   ========================================= */
+
+/* 1. 3D nga letra: daghang anino nga gipatong-patong */
+.hero h1 {
+  text-shadow:
+    1px 1px 0 #1f6b50,
+    2px 2px 0 #1f6b50,
+    3px 3px 0 #0f3d2e,
+    4px 4px 0 #0f3d2e,
+    7px 7px 12px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+  text-shadow: 2px 2px 0 #cfe3d6, 3px 3px 0 #b9d4c4;
+}
+
+/* 2. 3D nga button: murag button nga mahimo pislitan */
+.btn {
+  box-shadow: 0 6px 0 #082a1e;
+}
+
+.btn:hover {
+  box-shadow: 0 9px 0 #8f7213;
+}
+
+.btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 1px 0 #082a1e;
+}
+
+/* 3. 3D nga coin: gibaligya ang gibag-on sa daplin */
+.hero-art {
+  perspective: 800px;
+}
+
+.coin {
+  box-shadow:
+    0 0 0 3px #b8921a,
+    0 8px 0 #8f7213,
+    0 25px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* 4. 3D nga card: mo-tilt ug mo-taas kung i-hover */
+.grid-3,
+.grid-2,
+.timeline {
+  perspective: 1000px;
+}
+
+.card,
+.timeline-item {
+  box-shadow: 6px 6px 0 #b9d4c4, 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: rotateX(6deg) rotateY(-8deg) translateY(-8px);
+  box-shadow: 12px 14px 0 #b9d4c4, 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item {
+  transition: 0.3s;
+}
+
+.timeline-item:hover {
+  transform: rotateY(-8deg) translateX(8px);
+  box-shadow: 12px 10px 0 #b9d4c4, 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. 3D nga flip card (My Works): mo-balik kung i-hover */
+.flip {
+  height: 320px;
+  perspective: 1000px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip .entry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;     /* tagoon ang luyo sa card */
+  overflow: auto;
+  box-shadow: 6px 6px 0 #b9d4c4;
+}
+
+.flip .entry:hover {
+  transform: none;
+}
+
+.flip .flip-back {
+  transform: rotateY(180deg);
+  background-color: var(--green);
+  color: white;
+  border-color: var(--gold);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flip .flip-back:hover {
+  transform: rotateY(180deg);
+}
+
+.flip .flip-back .learned {
+  color: var(--ink);
+}
+
+.hint {
+  margin-top: 20px;
+  font-family: 'Special Elite', monospace;
+  color: var(--gold);
+}
+
+/* ===== PROFILE PICTURE ===== */
+.profile {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 30%, var(--green-light), var(--green));
+  border: 8px solid var(--gold);
+  box-shadow:
+    0 0 0 4px var(--green),
+    8px 12px 0 #082a1e,
+    0 25px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+/* kung wala pa ang litrato, "RG" ang makita */
+.profile span {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--gold);
+}
+
+/* ang litrato nagatabon sa "RG" */
+.profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile:hover {
+  transform: rotateY(-12deg) rotateX(6deg) translateY(-6px);
+}
+
+/* ang coin mahimong gamay ug naa sa kilid sa litrato */
+.hero-art .coin {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  border-width: 5px;
+}
+
+.hero-art .coin span {
+  font-size: 2.2rem;
+}
+
+/* ===== PARA SA LAHI-LAHING PAGE ===== */
+
+/* ang footer naa sa ubos kanunay bisan mubo ang page */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+/* ang page nga naka-open karon, naay bulawan nga linya sa menu */
+.navbar nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ang button sulod sa card dili mag-abot sa tibuok ilawom */
+.card .btn {
+  margin-top: 6px;
+}
+
+/* ===== PARA SA CELLPHONE / GAMAY NGA SCREEN ===== */
+@media (max-width: 850px) {
+  body::before {
+    display: none;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .navbar nav a {
+    margin: 0 8px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    padding: 50px 6%;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section {
+    padding: 50px 6% 20px 6%;
+  }
+
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    flex: 0 0 auto;
+  }
+}
